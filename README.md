@@ -38,7 +38,8 @@ output "gateway_id" {
 | description | A free-text description of the resource. | `string` | `null` | no |
 | gateway\_name | The name of the Agent Gateway resource. | `string` | n/a | yes |
 | google\_managed\_governed\_access\_path | Operating Mode of Agent Gateway when using Google Managed deployment. Conflicts with self\_managed\_resource\_uri. Possible values: AGENT\_TO\_ANYWHERE, CLIENT\_TO\_AGENT. | `string` | `null` | no |
-| labels | A map of key/value labels to apply. | `map(string)` | `{}` | no |
+| labels | Set of label tags associated with the AgentGateway resource. Native map format. | `map(string)` | `{}` | no |
+| labels\_str | Set of label tags associated with the AgentGateway resource. JSON encoded string format for legacy/CLH support. | `string` | `""` | no |
 | location | The location of the Agent Gateway | `string` | n/a | yes |
 | network\_config\_egress\_network\_attachment | The URI of the Network Attachment resource for egress in network\_config. Format: projects/{project}/regions/{region}/networkAttachments/{name} | `string` | `null` | no |
 | project\_id | The GCP project ID where the Agent Gateway will be created. | `string` | n/a | yes |

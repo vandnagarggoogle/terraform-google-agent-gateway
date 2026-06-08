@@ -46,6 +46,9 @@ spec:
         labels:
           name: labels
           title: Labels
+        labels_str:
+          name: labels_str
+          title: Labels Str
         location:
           name: location
           title: Location

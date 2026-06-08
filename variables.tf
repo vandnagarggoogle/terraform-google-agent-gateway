@@ -29,9 +29,15 @@ variable "gateway_name" {
 }
 
 variable "labels" {
-  description = "A map of key/value labels to apply."
+  description = "Set of label tags associated with the AgentGateway resource. Native map format."
   type        = map(string)
   default     = {}
+}
+
+variable "labels_str" {
+  description = "Set of label tags associated with the AgentGateway resource. JSON encoded string format for legacy/CLH support."
+  type        = string
+  default     = ""
 }
 
 variable "registries" {
