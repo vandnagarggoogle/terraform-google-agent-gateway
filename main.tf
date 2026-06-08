@@ -62,7 +62,7 @@ resource "google_network_services_agent_gateway" "main" {
 
 resource "google_project_iam_member" "dns_admin" {
   count   = var.agent_gateway_p4sa == null ? 0 : 1
-  project = var.project
+  project = var.project_id
   role    = "roles/dns.admin"
   member  = "serviceAccount:${var.agent_gateway_p4sa}"
 }
