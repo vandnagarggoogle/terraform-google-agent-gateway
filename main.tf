@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 locals {
-  parsed_labels_str = var.labels_str == "" ? {} : jsondecode(var.labels_str)
+  parsed_labels_str = try(jsondecode(var.labels_str), {})
 
-  final_labels = merge(var.labels, local.parsed_labels_str)
+  final_labels = merge(var.labels, can(keys(local.parsed_labels_str)) ? local.parsed_labels_str : {})
 }
 
 resource "google_network_services_agent_gateway" "main" {
