@@ -87,8 +87,10 @@ spec:
       - name: protocols
         description: List of protocols (e.g., ['MCP']).
         varType: list(string)
-        defaultValue:
-          - MCP
+        defaultValue: []
+      - name: agent_gateway_p4sa
+        description: The Agent Gateway P4SA in the consumer project.
+        varType: string
     outputs:
       - name: agent_gateway_id
         description: The full resource ID of the Agent Gateway.

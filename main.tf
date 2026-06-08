@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 locals {
-  parsed_labels_str = try(jsondecode(var.labels_str), {})
+  parsed_labels_str = var.labels_str == "" ? {} : jsondecode(var.labels_str)
 
-  final_labels = merge(var.labels, can(keys(local.parsed_labels_str)) ? local.parsed_labels_str : {})
+  final_labels = merge(var.labels, local.parsed_labels_str)
 }
 
 resource "google_network_services_agent_gateway" "main" {
@@ -58,4 +58,11 @@ resource "google_network_services_agent_gateway" "main" {
     update = var.timeout_update
     delete = var.timeout_delete
   }
+}
+
+resource "google_project_iam_member" "dns_admin" {
+  count   = var.agent_gateway_p4sa == null ? 0 : 1
+  project = var.project
+  role    = "roles/dns.admin"
+  member  = "serviceAccount:${var.agent_gateway_p4sa}"
 }

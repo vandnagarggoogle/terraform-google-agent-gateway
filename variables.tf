@@ -91,5 +91,11 @@ variable "timeout_delete" {
 variable "protocols" {
   description = "List of protocols (e.g., ['MCP'])."
   type        = list(string)
-  default     = ["MCP"]
+  default     = []
+}
+
+variable "agent_gateway_p4sa" {
+  description = "The Agent Gateway P4SA in the consumer project."
+  type        = string
+  default     = null
 }
